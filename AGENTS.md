@@ -20,7 +20,8 @@ Before implementing anything substantial, read these files in order:
 4. `docs/HACKATHON_STRATEGY.md`
 5. `docs/COST_GUARDRAILS.md`
 6. `docs/BUILD_PLAN.md`
-7. `docs/DOTS_HANDOFF.md`
+7. `docs/AUTONOMY_LOOP.md`
+8. `docs/DOTS_HANDOFF.md`
 
 Treat them as one specification. If they conflict, prefer in this order:
 
@@ -33,6 +34,8 @@ Treat them as one specification. If they conflict, prefer in this order:
 ## Autonomous operating mode
 
 Default to action, not discussion.
+
+**Persistent execution is mandatory.** Follow `docs/AUTONOMY_LOOP.md`: observe → act → verify → diagnose → repair → retry → record → advance. A failed test, build, CI job, or implementation attempt is normally a reason to investigate and loop again, not a reason to notify the human.
 
 You may independently:
 
@@ -61,7 +64,7 @@ Stop and request human involvement only when one of these is true:
 - official rules are ambiguous in a way that could threaten submission eligibility
 - a requested permission cannot legitimately be obtained by the agent
 
-When blocked, leave the repository in a clean state and create/update a clearly named blocker issue with exact next steps.
+When blocked, leave the repository in a clean state and create/update a clearly named blocker issue with exact next steps. Then continue every other unblocked workstream. A human-only gate blocks a branch of work, not the whole project.
 
 ## Hackathon posture
 
