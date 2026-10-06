@@ -4,7 +4,7 @@
 
 If this repository is handed to dots or another autonomous work agent, the human should be able to say:
 
-> Open this repository, read AGENTS.md and all linked design documents, then execute BUILD_PLAN.md autonomously toward a submission-ready GitLab Transcend hackathon project. Use GitLab and Google Cloud as specified. Do not exceed free usage ranges. Stop only for missing authorization, genuine rule ambiguity, or cost risk.
+> Open this repository, read AGENTS.md and all linked design documents, especially docs/AUTONOMY_LOOP.md, then execute BUILD_PLAN.md autonomously toward a submission-ready GitLab Transcend hackathon project. Keep looping through implementation, tests, failures, diagnosis, repairs, and verification without waiting for me. Move to the next unblocked phase automatically. Use GitLab and Google Cloud as specified. Do not exceed free usage ranges. Stop only at genuine human-only gates such as interactive authorization, irreversible approval, unresolved eligibility ambiguity, or cost risk.
 
 That should be enough context to begin.
 
@@ -33,6 +33,8 @@ The build should be optimized for **actual judging evidence**, not merely featur
 
 ## Autonomy rules
 
+`docs/AUTONOMY_LOOP.md` is mandatory. Do not stop after reporting an ordinary error. Diagnose it, repair it, rerun the relevant checks, and continue until acceptance criteria are met or a genuine human-only gate is proven.
+
 Do not ask the human to choose among equivalent implementation details.
 
 Choose.
@@ -46,6 +48,8 @@ Examples you may decide without asking:
 - how to represent generation metadata
 - exact CI job split
 - whether a helper is a script or small module
+
+Do not require the human to say “continue” between phases. Advance through the earliest incomplete unblocked phase automatically.
 
 Ask/stop only when:
 
