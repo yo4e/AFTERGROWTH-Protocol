@@ -4,6 +4,8 @@
 
 Reach a stable, judge-visible **Hands-off Issue → production generation** loop early, then spend remaining time strengthening lifecycle coverage and presentation.
 
+The implementation agent owns phase progression. Follow `docs/AUTONOMY_LOOP.md`: complete acceptance criteria, verify reality, update status/evidence, then move to the next unblocked phase without waiting for a human continuation prompt.
+
 Deadline: **2026-10-27 13:00 UTC / 22:00 JST**.
 
 Do not treat October 27 as a build day. Target submission-ready state by October 26.
