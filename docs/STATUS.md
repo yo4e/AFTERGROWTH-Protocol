@@ -15,7 +15,7 @@ Updated 2026-10-07. Baseline: GitHub main `d740aaa`. Active task: bootstrap Issu
 
 Passed: lint, Prettier, TypeScript, 15 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
 
-Not run: OCI container build (no local Docker/Podman runtime installed; bootstrap runner CI now prepared), GitLab CI/server-side flow validation, container image vulnerability scan, real Duo growth, cloud health/rollback, live cost/account usage checks.
+Not run: GitLab CI/server-side flow validation, real Duo growth, cloud health/rollback, live cost/account usage checks.
 
 Failures diagnosed/repaired: browser globals absent from lint config; initial Vitest dependency vulnerabilities (upgraded to 5.0.3); loopback sandbox restriction (tests rerun with approved local waiting socket); prototype-named static paths and inconsistent manifests hardened during self-review.
 
@@ -36,3 +36,5 @@ Once GitLab access is available: import the reviewed bootstrap, run server CI li
 Deadline verified against official rules: October 27, 2026 13:00 UTC / 22:00 JST. Target ready October 26. No submitted version exists yet.
 
 Follow-up security: local Gitleaks and Semgrep passed (details in SECURITY_CHECKS.md); neither required human authentication. Initial exact head 95ea4fd had zero CI checks; read-only bootstrap verification workflow added on the existing enabled Actions service. Await/check latest-head result before reporting CI green.
+
+Bootstrap runner head 87da9b7 CI succeeded, including OCI build and running-container smoke. Trivy HIGH/CRITICAL vulnerability gate is being added for the next exact-head run. GitLab CI/evidence remains blocked by canonical access.

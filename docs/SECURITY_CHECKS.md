@@ -7,7 +7,7 @@ Local secret/SAST checks are not authentication gates. They were initially omitt
 - npm audit: all installed dependencies, moderate-and-above blocking, 0 vulnerabilities after Vitest upgrade.
 - Protected-file and cost gates: negative tests reject governance changes, credential-shaped paths, unsupported infrastructure and false production claims.
 
-Limitations: scanner findings=0 is not proof that vulnerabilities cannot exist. No GitLab-native security report/dashboard is available until canonical project access. Container-image/package scans depend on a built OCI image and selected supported scanner; bootstrap runner builds/smokes the image without publishing it. Production IAM, keyless identity, usage and public service configuration need approved target access.
+Limitations: scanner findings=0 is not proof that vulnerabilities cannot exist. No GitLab-native security report/dashboard is available until canonical project access. Bootstrap runner built/smoked an OCI image successfully at head 87da9b7. Trivy 0.75.0 HIGH/CRITICAL image vulnerability gate is added for subsequent heads; results must be read before reporting completion. Production IAM, keyless identity, usage and public service configuration need approved target access.
 
 Bootstrap GitHub CI uses the existing public repository's standard ubuntu-latest runner, read-only contents permission, pinned official Actions, 12-minute timeout and no stored cache/artifact or publication. It does not replace judge-visible GitLab evidence. The workflow is scoped to the bootstrap implementation branch and main; no automatic merge, deployment or release.
 

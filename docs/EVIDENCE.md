@@ -78,3 +78,5 @@ Screenshots/video are presentation aids; GitLab history is the audit trail.
 Official rules/pricing were re-read: [rules](https://gitlab-transcend.devpost.com/rules), [Cloud Run](https://cloud.google.com/run/pricing), [Cloud Build](https://cloud.google.com/build/pricing), [Artifact Registry](https://cloud.google.com/artifact-registry/pricing). Shared billing-account usage must still be checked before provisioning.
 
 Follow-up: authentication-free secret/SAST verification completed (Gitleaks 8.30.1: 17 commits/0 findings; Semgrep 1.179.0: 74 rules/8 files/0 findings/0 errors). See SECURITY_CHECKS.md. Bootstrap GitHub CI added after confirming existing Actions enabled and standard public runner free; its status must be read on the exact latest head. This remains separate from public GitLab lifecycle proof.
+
+Bootstrap CI head `87da9b713fc3a679dfb9a8a89e5e7f0a2d92a252`: [run 37551508587](https://github.com/yo4e/AFTERGROWTH-Protocol/actions/runs/37551508587) concluded success. Passed quality, browser, dependency audit, Gitleaks, Semgrep, OCI build and running-container generation smoke. No image was pushed. Subsequent heads must be verified independently.

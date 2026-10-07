@@ -50,3 +50,13 @@ jobs:
             sleep 1
           done
           npx tsx scripts/smoke.ts http://127.0.0.1:8080 gen-0000
+      - name: Container vulnerability gate
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-64bit.tar.gz -o /tmp/trivy_0.75.0_Linux-64bit.tar.gz
+          curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_checksums.txt -o /tmp/trivy-checksums.txt
+          cd /tmp
+          python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); expected=next(line.split()[0] for line in (p/'trivy-checksums.txt').read_text().splitlines() if line.endswith('trivy_0.75.0_Linux-64bit.tar.gz')); assert hashlib.sha256((p/'trivy_0.75.0_Linux-64bit.tar.gz').read_bytes()).hexdigest()==expected"
+          tar -xzf trivy_0.75.0_Linux-64bit.tar.gz trivy
+          cd "$GITHUB_WORKSPACE"
+          /tmp/trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 aftergrowth-bootstrap
