@@ -1,5 +1,7 @@
 # Recording plan — pending real external evidence
 
+Owner finish-review gate: **do not record, generate or edit the presentation video until the owner has inspected the actual running application and explicitly said OK** (instruction 2026-10-07). Record the reviewed build/generation and approval evidence. This storyboard remains preparation only. Passing checks, screenshots and earlier permissions do not satisfy the gate.
+
 Target 2:40. Do not record simulated pipeline or local mocked rollback as production proof.
 
 - 0:00–0:20: show live generation, habitat and lineage; explain that intent grows into verified production.

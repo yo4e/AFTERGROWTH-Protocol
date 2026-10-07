@@ -21,7 +21,7 @@ Do not replace these placeholders with claims until evidence exists:
 - Hands-off merge/release/production: requires explicit authority and real GitLab/GCP targets.
 - Two successful production Issues + one safe rejection/rollback: pending; local simulations do not qualify.
 - Live Google Cloud URL and bonus deployment code evidence: pending.
-- Public YouTube video (<3 minutes): storyboard prepared; real loop recording/upload pending owner approval.
+- Public YouTube video (<3 minutes): storyboard prepared. Before recording/generation/editing, owner must inspect the actual running app and explicitly say OK; this finish approval is pending. Public upload remains a separate owner approval.
 - Nine-stage evidence links: use EVIDENCE.md; counters remain 0 until public GitLab artifacts exist.
 
 ## Architecture narrative

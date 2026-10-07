@@ -21,6 +21,8 @@ Failures diagnosed/repaired: browser globals absent from lint config; initial Vi
 
 ## Active gates / next autonomous work
 
+Owner update 2026-10-07: dedicated GitLab application received, administrator approval pending, allocated project URL not yet available; Devpost hackathon Join complete. No reapplication/Join action needed. Before any presentation video recording/generation/editing, the owner must inspect the actual running app and explicitly approve its finish. App finish approval is not yet given; record reviewed build/generation and approval evidence when it arrives.
+
 See [ACCESS_GATES.md](ACCESS_GATES.md). Existing Issue #2 is the onboarding blocker; #6 is the GCP gate. No authenticated GitLab/GCP tool, canonical project URL or approved resource identity is available here. Human confirms existing access and the dedicated targets; no credentials should be pasted into chat.
 
 Once GitLab access is available: import the reviewed bootstrap, run server CI lint and pipeline (including OCI), enable/validate the Duo candidate in the allocated project, capture a fresh Issue → tested MR. Select target-supported GitLab-native security reporting and runner packaging before wiring release jobs. Bootstrap protected governance files require explicit review. Once production authority/resources are approved: wire serialized generation allocation, release, OIDC deploy, candidate revision verification, traffic promotion, ancestor restoration and Issue report, then run the two-success/one-failure campaign.
@@ -40,3 +42,5 @@ Follow-up security: local Gitleaks and Semgrep passed (details in SECURITY_CHECK
 Bootstrap runner head 87da9b7 CI succeeded, including OCI build and running-container smoke. Trivy HIGH/CRITICAL vulnerability gate is being added for the next exact-head run. GitLab CI/evidence remains blocked by canonical access.
 
 Head 01add99 image gate failed with 11 HIGH npm-bundle vulnerabilities, correctly blocking completion. Runtime package managers are removed and the next exact-head run revalidates build/smoke/scan; no ignore-unfixed or allowlist bypass. Governance now includes unknown infra/Terraform and runs immutable MR-base code without candidate dependencies.
+
+Verified implementation baseline: head `20cdb5eacf018674343fa4b8990c0f47910d1613`, [bootstrap CI 37551999868](https://github.com/yo4e/AFTERGROWTH-Protocol/actions/runs/37551999868) SUCCESS, including OCI build/smoke and Trivy HIGH/CRITICAL 0 after removing unused package managers. Later documentation-only updates must not be mistaken for a check run on that implementation head.
