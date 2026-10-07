@@ -13,3 +13,9 @@ Implemented/verified local app + safety helpers. Status/evidence distinguish loc
 Initial failures and repairs are recorded in STATUS.md. External gates in ACCESS_GATES.md. No automatic merge or deployment enabled.
 
 End/PR delivery time is reported to the parent after the normal PR is created.
+
+Implementation/verification ended: 00:15:57 UTC / 09:15:57 JST (9m06s from first observation). Delivery bookkeeping follows.
+
+Normal open PR: https://github.com/yo4e/AFTERGROWTH-Protocol/pull/9 (not draft, no merge).
+Blocker comments: https://github.com/yo4e/AFTERGROWTH-Protocol/issues/2#issuecomment-6027950958 and https://github.com/yo4e/AFTERGROWTH-Protocol/issues/6#issuecomment-6027951220 .
+Final local verification: 14 unit/integration tests + 2 headless browser tests, all quality gates and compiled HTTP smoke passed; audit 0. Working tree clean after commits. External gates remain as documented.
