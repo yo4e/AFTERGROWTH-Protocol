@@ -63,3 +63,16 @@ Record either:
 Prefer links to durable GitLab artifacts over screenshots.
 
 Screenshots/video are presentation aids; GitLab history is the audit trail.
+
+## Local preparation — 2026-10-07 (not GitLab lifecycle proof)
+
+- `npm run check`: lint/format/typecheck, 14 unit/integration assertions, cost/generation policy, build passed.
+- `npm run test:browser`: 2 headless tests passed. Night-flower screenshot is a renderer fixture; it is not a deployed mutation.
+- Compiled server + `smoke` identified gen-0000 successfully over loopback.
+- `npm audit --audit-level=moderate`: 0 vulnerabilities after repairing the initial vulnerable test dependency.
+- Rejection tests cover metadata, missing release checks, wrong production generation, cost expansion and protected/credential-shaped paths.
+- Rollback tests prove failed candidate → restore ancestor → revalidate; failed ancestor validation never reports success. These are injected-function tests, not Cloud Run evidence.
+- CI and Duo YAML parse locally. Target GitLab validators/runners/flow identity are pending.
+- OCI build, SAST/secret/container scanning and actual cloud usage remain unverified.
+
+Official rules/pricing were re-read: [rules](https://gitlab-transcend.devpost.com/rules), [Cloud Run](https://cloud.google.com/run/pricing), [Cloud Build](https://cloud.google.com/build/pricing), [Artifact Registry](https://cloud.google.com/artifact-registry/pricing). Shared billing-account usage must still be checked before provisioning.

@@ -1,0 +1,12 @@
+{
+  "region": "us-central1",
+  "service": "aftergrowth",
+  "minInstances": 0,
+  "maxInstances": 1,
+  "cpu": 1,
+  "memory": "256Mi",
+  "timeoutSeconds": 30,
+  "billing": "request",
+  "retainedImages": 3,
+  "provisioningApproved": false
+}

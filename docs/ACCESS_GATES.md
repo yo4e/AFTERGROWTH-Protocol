@@ -1,0 +1,13 @@
+# Access and approval gates — 2026-10-07
+
+No GitLab/GCP authenticated CLI or connector is available in this execution environment. No public GitLab allocation URL or approved GCP resource identity is recorded. Existing bootstrap Issues #2, #5 and #6 remain open. No credential was read, created or printed; no cloud resource was provisioned; no deployment or merge was performed.
+
+1. GitLab: account owner confirms contributor onboarding at https://contributors.gitlab.com/ and supplies the allocated hackathon project URL. If not onboarded, register/accept invitation (official rules estimate approval in about 24 business hours). Approve import/public visibility for this specific project and provide an already-authorized authenticated execution path. This unlocks canonical import, CI validation, runner verification and Duo setup.
+2. Duo: within that project, confirm hackathon-provided credits/access and permit the required project-scoped flow identity/trigger. No paid upgrade or credit purchase is authorized. Create/enable custom flow under AI > Flows only after its YAML is validated in the target GitLab version. Label-only triggers are not assumed supported. Start with a documented Assign trigger; a human can assign the flow service account as part of creating intent. Do not enable bot-comment triggers or autonomous merge without explicit approval.
+3. GCP: identify an approved project and billing account, confirm free allowances remaining across the billing account, and authorize the named Cloud Run/Artifact Registry footprint and least-privilege WIF identity. Required footprint: us-central1, one aftergrowth service, request billing, min=0/max=1, 1 CPU, 256Mi, timeout=30s; at most 3 compact registry images and total storage below 0.5GiB-month. Public unauthenticated access is a separate approval. Budget alerts do not enforce a spending cap. No key creation or IAM grant is authorized by this bootstrap.
+4. Production automation: explicitly approve automatic merge/release/deploy/rollback in the dedicated project. Until then these remain gates, even if project specifications describe the desired final hands-off behavior.
+5. Submission: approve public YouTube upload and Devpost submission after reviewing final assets; freeze at October 27 13:00 UTC / 22:00 JST, target ready October 26. No final submission is made by this build.
+
+The parent task posts results and these decisions to Slack #github関連 and records Google Calendar work time.
+
+Official references checked: https://gitlab-transcend.devpost.com/rules ; https://docs.gitlab.com/user/duo_agent_platform/flows/custom/ ; https://docs.gitlab.com/user/duo_agent_platform/flows/custom_flows_schema/ ; https://docs.gitlab.com/user/duo_agent_platform/triggers/ .

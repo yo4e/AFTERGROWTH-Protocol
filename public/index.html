@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>AFTERGROWTH Protocol</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <header>
+      <p>AFTERGROWTH / PROTOCOL</p>
+      <h1>Code is only the beginning.<br />What comes after is growth.</h1>
+    </header>
+    <main>
+      <section aria-label="Current habitat">
+        <div class="bar">
+          <span id="generation"></span><span id="health"></span>
+        </div>
+        <h2 id="mutation"></h2>
+        <label
+          >Habitat hour
+          <input id="hour" type="range" min="0" max="23" value="12" /><output
+            id="time"
+            >12:00</output
+          ></label
+        ><svg
+          id="habitat"
+          viewBox="0 0 900 400"
+          role="img"
+          aria-label="Deterministic living habitat"
+        ></svg>
+        <p id="traits"></p>
+      </section>
+      <section>
+        <h2>Lineage / fossil record</h2>
+        <ol id="lineage"></ol>
+      </section>
+    </main>
+    <footer>Git is heredity. Every viable generation leaves a trace.</footer>
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
