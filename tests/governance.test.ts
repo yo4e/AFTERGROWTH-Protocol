@@ -7,6 +7,8 @@ it("blocks weakened guardrails and credential-shaped paths", () => {
   for (const path of [
     "AGENTS.md",
     ".github/workflows/bootstrap.yml",
+    "infra/database.yaml",
+    "elsewhere/paid-worker.tf",
     "scripts/policy.ts",
     "infra/cloud-run.json",
     ".env",

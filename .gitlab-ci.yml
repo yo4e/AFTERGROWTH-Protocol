@@ -43,10 +43,15 @@ container:
 protected-files:
   stage: govern
   image: node:22
+  before_script: []
+  variables:
+    GIT_DEPTH: "0"
   rules:
     - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
   script:
-    - npx tsx scripts/governance.ts
+    - mkdir -p /tmp/aftergrowth-trusted
+    - git show "$CI_MERGE_REQUEST_DIFF_BASE_SHA:scripts/governance.ts" > /tmp/aftergrowth-trusted/governance.ts
+    - node --experimental-strip-types /tmp/aftergrowth-trusted/governance.ts
 dependency-audit:
   stage: govern
   script:

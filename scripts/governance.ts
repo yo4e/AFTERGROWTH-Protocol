@@ -10,7 +10,12 @@ export const protectedPaths = [
 ];
 export function guardChanges(paths: string[]) {
   for (const path of paths) {
-    if (protectedPaths.includes(path) || path.startsWith(".github/workflows/"))
+    if (
+      protectedPaths.includes(path) ||
+      path.startsWith(".github/workflows/") ||
+      path.startsWith("infra/") ||
+      /\.(tf|tfvars)$/.test(path)
+    )
       throw new Error(`Protected change needs human review: ${path}`);
     if (
       /(^|\/)(\.env(?:\..*)?|.*\.(pem|key)|.*credentials.*\.json)$/.test(path)

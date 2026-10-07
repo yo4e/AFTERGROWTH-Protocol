@@ -53,8 +53,8 @@ Record either:
 
 ## Presentation assets
 
-- architecture diagram: TBD
-- final demo script: TBD
+- architecture diagram: [local lifecycle map](LIFECYCLE_MAP.md); final deployed diagram pending
+- final demo script: [recording storyboard](DEMO_SCRIPT.md); final real footage pending
 - YouTube URL (<3 minutes): TBD
 - Devpost URL: TBD
 
@@ -73,7 +73,7 @@ Screenshots/video are presentation aids; GitLab history is the audit trail.
 - Rejection tests cover metadata, missing release checks, wrong production generation, cost expansion and protected/credential-shaped paths.
 - Rollback tests prove failed candidate → restore ancestor → revalidate; failed ancestor validation never reports success. These are injected-function tests, not Cloud Run evidence.
 - CI and Duo YAML parse locally. Target GitLab validators/runners/flow identity are pending.
-- OCI build, SAST/secret/container scanning and actual cloud usage remain unverified.
+- Original bootstrap had not yet run OCI/secret/SAST checks; subsequent results below supersede that limitation. Real cloud usage remains unverified.
 
 Official rules/pricing were re-read: [rules](https://gitlab-transcend.devpost.com/rules), [Cloud Run](https://cloud.google.com/run/pricing), [Cloud Build](https://cloud.google.com/build/pricing), [Artifact Registry](https://cloud.google.com/artifact-registry/pricing). Shared billing-account usage must still be checked before provisioning.
 

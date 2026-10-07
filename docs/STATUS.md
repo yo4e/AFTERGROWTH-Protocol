@@ -13,7 +13,7 @@ Updated 2026-10-07. Baseline: GitHub main `d740aaa`. Active task: bootstrap Issu
 
 ## Latest verification
 
-Passed: lint, Prettier, TypeScript, 15 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
+Passed: lint, Prettier, TypeScript, 16 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
 
 Not run: GitLab CI/server-side flow validation, real Duo growth, cloud health/rollback, live cost/account usage checks.
 
@@ -38,3 +38,5 @@ Deadline verified against official rules: October 27, 2026 13:00 UTC / 22:00 JST
 Follow-up security: local Gitleaks and Semgrep passed (details in SECURITY_CHECKS.md); neither required human authentication. Initial exact head 95ea4fd had zero CI checks; read-only bootstrap verification workflow added on the existing enabled Actions service. Await/check latest-head result before reporting CI green.
 
 Bootstrap runner head 87da9b7 CI succeeded, including OCI build and running-container smoke. Trivy HIGH/CRITICAL vulnerability gate is being added for the next exact-head run. GitLab CI/evidence remains blocked by canonical access.
+
+Head 01add99 image gate failed with 11 HIGH npm-bundle vulnerabilities, correctly blocking completion. Runtime package managers are removed and the next exact-head run revalidates build/smoke/scan; no ignore-unfixed or allowlist bypass. Governance now includes unknown infra/Terraform and runs immutable MR-base code without candidate dependencies.
