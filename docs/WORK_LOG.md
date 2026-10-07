@@ -19,3 +19,8 @@ Implementation/verification ended: 00:15:57 UTC / 09:15:57 JST (9m06s from first
 Normal open PR: https://github.com/yo4e/AFTERGROWTH-Protocol/pull/9 (not draft, no merge).
 Blocker comments: https://github.com/yo4e/AFTERGROWTH-Protocol/issues/2#issuecomment-6027950958 and https://github.com/yo4e/AFTERGROWTH-Protocol/issues/6#issuecomment-6027951220 .
 Final local verification: 14 unit/integration tests + 2 headless browser tests, all quality gates and compiled HTTP smoke passed; audit 0. Working tree clean after commits. External gates remain as documented.
+
+## Follow-up verification
+
+Started: 2026-10-07 00:18:17 UTC / 09:18:17 JST. Parent requested exact-head CI and non-gate security follow-through.
+Initial head 95ea4fd981191a90d9ba13209cf41685cad6c891 had zero check runs/statuses; GitHub Actions was already enabled but had no workflow. Local secret/SAST checks were not human-blocked: Gitleaks 8.30.1 scanned 17 commits with 0 findings; Semgrep 1.179.0 ran 74 rules over 8 files with 0 findings/errors. Added read-only free standard-runner bootstrap CI, and secret/SAST/format gates in the GitLab candidate. No new public target, merge, IAM expansion or deployment.

@@ -13,9 +13,9 @@ Updated 2026-10-07. Baseline: GitHub main `d740aaa`. Active task: bootstrap Issu
 
 ## Latest verification
 
-Passed: lint, Prettier, TypeScript, 14 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
+Passed: lint, Prettier, TypeScript, 15 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
 
-Not run: OCI container build (no Docker/Podman runtime installed), GitLab CI/server-side flow validation, SAST/secret/container scans, real Duo growth, cloud health/rollback, live cost/account usage checks.
+Not run: OCI container build (no local Docker/Podman runtime installed; bootstrap runner CI now prepared), GitLab CI/server-side flow validation, container image vulnerability scan, real Duo growth, cloud health/rollback, live cost/account usage checks.
 
 Failures diagnosed/repaired: browser globals absent from lint config; initial Vitest dependency vulnerabilities (upgraded to 5.0.3); loopback sandbox restriction (tests rerun with approved local waiting socket); prototype-named static paths and inconsistent manifests hardened during self-review.
 
@@ -23,7 +23,7 @@ Failures diagnosed/repaired: browser globals absent from lint config; initial Vi
 
 See [ACCESS_GATES.md](ACCESS_GATES.md). Existing Issue #2 is the onboarding blocker; #6 is the GCP gate. No authenticated GitLab/GCP tool, canonical project URL or approved resource identity is available here. Human confirms existing access and the dedicated targets; no credentials should be pasted into chat.
 
-Once GitLab access is available: import the reviewed bootstrap, run server CI lint and pipeline (including OCI), enable/validate the Duo candidate in the allocated project, capture a fresh Issue → tested MR. Select target-supported security checks and runner packaging before wiring release jobs. Bootstrap protected governance files require explicit review. Once production authority/resources are approved: wire serialized generation allocation, release, OIDC deploy, candidate revision verification, traffic promotion, ancestor restoration and Issue report, then run the two-success/one-failure campaign.
+Once GitLab access is available: import the reviewed bootstrap, run server CI lint and pipeline (including OCI), enable/validate the Duo candidate in the allocated project, capture a fresh Issue → tested MR. Select target-supported GitLab-native security reporting and runner packaging before wiring release jobs. Bootstrap protected governance files require explicit review. Once production authority/resources are approved: wire serialized generation allocation, release, OIDC deploy, candidate revision verification, traffic promotion, ancestor restoration and Issue report, then run the two-success/one-failure campaign.
 
 ## Completion counters
 
@@ -34,3 +34,5 @@ Once GitLab access is available: import the reviewed bootstrap, run server CI li
 - Submission-ready video: **no**
 
 Deadline verified against official rules: October 27, 2026 13:00 UTC / 22:00 JST. Target ready October 26. No submitted version exists yet.
+
+Follow-up security: local Gitleaks and Semgrep passed (details in SECURITY_CHECKS.md); neither required human authentication. Initial exact head 95ea4fd had zero CI checks; read-only bootstrap verification workflow added on the existing enabled Actions service. Await/check latest-head result before reporting CI green.

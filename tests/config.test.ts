@@ -12,3 +12,16 @@ it("CI and flow candidates parse; flow uses supported ambient v1 fields", () => 
   expect(flow.prompts[0].prompt_id).toBe(flow.components[0].prompt_id);
   expect(flow.prompts[0]).not.toHaveProperty("model");
 });
+
+it("bootstrap CI stays read-only with standard runner and no deploy/publish/cache", () => {
+  const ci = parse(readFileSync(".github/workflows/bootstrap.yml", "utf8"));
+  expect(ci.permissions).toEqual({ contents: "read" });
+  expect(ci.jobs.verify["runs-on"]).toBe("ubuntu-latest");
+  expect(ci.jobs.verify["timeout-minutes"]).toBeLessThanOrEqual(12);
+  for (const step of ci.jobs.verify.steps)
+    if (step.uses) expect(step.uses).toMatch(/@[a-f0-9]{40}$/);
+  const yaml = readFileSync(".github/workflows/bootstrap.yml", "utf8");
+  expect(yaml).not.toMatch(
+    /upload-artifact|actions\/cache|docker push|gcloud|secrets\./,
+  );
+});

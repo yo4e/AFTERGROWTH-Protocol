@@ -6,6 +6,7 @@ it("blocks weakened guardrails and credential-shaped paths", () => {
   ).not.toThrow();
   for (const path of [
     "AGENTS.md",
+    ".github/workflows/bootstrap.yml",
     "scripts/policy.ts",
     "infra/cloud-run.json",
     ".env",
