@@ -131,6 +131,7 @@ For the actual submission, the project must live in a **public GitLab project** 
 - [docs/HACKATHON_STRATEGY.md](docs/HACKATHON_STRATEGY.md) — judging, prize, and evidence strategy
 - [docs/COST_GUARDRAILS.md](docs/COST_GUARDRAILS.md) — free-tier constraints
 - [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md) — implementation order and acceptance gates
+- [docs/REFERENCES.md](docs/REFERENCES.md) — conceptual references, design implications, and explicit scope boundaries
 
 ## Design principles
 
@@ -149,3 +150,36 @@ Planning / bootstrap phase. No implementation should be considered stable until 
 ---
 
 MIT License. See [LICENSE](LICENSE).
+
+## Local bootstrap (implementation branch)
+
+Requires Node.js 22+.
+
+```sh
+npm ci
+npm run check
+npx playwright install chromium
+npm run test:browser
+npm run dev
+```
+
+Open http://localhost:8080. For the compiled server: `npm run build && npm start`.
+The deterministic hour slider changes day/night. Set `world/current.json` trait
+`lumenFlowers` to true to make five flowers visible only before 06:00 or after 18:00.
+The seed has production checks marked pending; a healthy local HTTP service is not
+proof of a production generation. No external merge/deploy automation is enabled.
+
+`npm run policy` checks generation consistency and the exact cost-safe footprint.
+The MR protected-files gate requires GitLab's immutable diff base SHA and refuses
+governance changes for human review. Initial bootstrap governance needs review;
+this branch is not expected to bypass its own protection when first imported.
+
+See [access gates](docs/ACCESS_GATES.md), [Duo setup candidate](docs/DUO_SETUP.md)
+and [evidence ledger](docs/EVIDENCE.md) for remaining external validation.
+
+Each generation requires a deterministic `acceptance` contract. Production smoke
+uses a trusted local manifest to check generation identity and actual world behavior,
+including day/night mutation assertions. The two-argument CLI uses the packaged current
+manifest; an explicit trusted candidate manifest can be supplied as the third argument.
+See [production acceptance](docs/PRODUCTION_ACCEPTANCE.md). Cloud traffic callbacks
+remain injected scaffolding until the deployment target and authority are approved.

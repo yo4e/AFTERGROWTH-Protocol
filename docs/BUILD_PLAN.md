@@ -270,6 +270,10 @@ October 21–23.
 
 ## Phase 9 — Submission engineering
 
+### Human finish-review gate — explicit owner instruction, 2026-10-07
+
+Before producing the presentation video, show the owner the actual running application and let them inspect its finish. Recording, video generation and editing must not begin until the owner explicitly says OK after that review. Record the reviewed build/generation and approval evidence in the handoff. Existing storyboard drafts are preparation only; pipeline success, screenshots, earlier deployment permission or silence do not satisfy this gate. This review is outside the hands-off growth run and does not add approval steps inside the Issue → production loop.
+
 ### Deliverables
 
 - architecture diagram

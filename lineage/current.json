@@ -1,0 +1,33 @@
+{
+  "id": "gen-0000",
+  "parent": null,
+  "issue": null,
+  "merge_request": null,
+  "commit": null,
+  "mutation": "First roots",
+  "checks": {
+    "tests": "pending",
+    "security": "pending",
+    "policy": "pending",
+    "production": "pending"
+  },
+  "deployment_revision": null,
+  "created_at": "2026-10-07T00:00:00.000Z",
+  "acceptance": [
+    {
+      "kind": "trait-includes",
+      "collection": "flora",
+      "value": "reed"
+    },
+    {
+      "kind": "flowers-at-hour",
+      "hour": 12,
+      "expected": 0
+    },
+    {
+      "kind": "flowers-at-hour",
+      "hour": 21,
+      "expected": 0
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+name: Bootstrap verification
+on:
+  push:
+    branches: [feat/seed-habitat-lifecycle, main]
+permissions:
+  contents: read
+concurrency:
+  group: bootstrap-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  verify:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        with:
+          node-version: 22
+          package-manager-cache: false
+      - run: npm ci
+      - run: npm run check
+      - run: npx playwright install --with-deps chromium
+      - run: npm run test:browser
+      - run: npm audit --audit-level=moderate
+      - name: Secret detection (redacted)
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_linux_x64.tar.gz -o /tmp/gitleaks_8.30.1_linux_x64.tar.gz
+          curl -fsSL https://github.com/gitleaks/gitleaks/releases/download/v8.30.1/gitleaks_8.30.1_checksums.txt -o /tmp/gitleaks-checksums.txt
+          cd /tmp
+          python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); expected=next(line.split()[0] for line in (p/'gitleaks-checksums.txt').read_text().splitlines() if line.endswith('gitleaks_8.30.1_linux_x64.tar.gz')); assert hashlib.sha256((p/'gitleaks_8.30.1_linux_x64.tar.gz').read_bytes()).hexdigest()==expected"
+          tar -xzf gitleaks_8.30.1_linux_x64.tar.gz gitleaks
+          cd "$GITHUB_WORKSPACE"
+          /tmp/gitleaks git --redact --no-banner .
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97
+        with:
+          python-version: "3.12"
+      - run: python -m pip install semgrep==1.179.0
+      - run: semgrep scan --config p/typescript --config p/javascript --metrics off --disable-version-check --error src scripts public
+      - name: Build and smoke OCI container locally on runner
+        shell: bash
+        run: |
+          docker build --tag aftergrowth-bootstrap .
+          docker run --detach --name aftergrowth-check --publish 127.0.0.1:8080:8080 aftergrowth-bootstrap
+          trap 'docker rm --force aftergrowth-check' EXIT
+          docker exec aftergrowth-check sh -c 'test ! -e /usr/local/lib/node_modules/npm && test ! -e /opt/yarn-v1.22.22 && node --version'
+          docker image inspect --format '{{.Size}}' aftergrowth-bootstrap
+          for attempt in 1 2 3 4 5; do
+            if curl -fsS http://127.0.0.1:8080/healthz >/dev/null; then break; fi
+            sleep 1
+          done
+          npx tsx scripts/smoke.ts http://127.0.0.1:8080 gen-0000
+      - name: Container vulnerability gate
+        shell: bash
+        run: |
+          curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_Linux-64bit.tar.gz -o /tmp/trivy_0.75.0_Linux-64bit.tar.gz
+          curl -fsSL https://github.com/aquasecurity/trivy/releases/download/v0.75.0/trivy_0.75.0_checksums.txt -o /tmp/trivy-checksums.txt
+          cd /tmp
+          python3 -c "import hashlib,pathlib; p=pathlib.Path('.'); expected=next(line.split()[0] for line in (p/'trivy-checksums.txt').read_text().splitlines() if line.endswith('trivy_0.75.0_Linux-64bit.tar.gz')); assert hashlib.sha256((p/'trivy_0.75.0_Linux-64bit.tar.gz').read_bytes()).hexdigest()==expected"
+          tar -xzf trivy_0.75.0_Linux-64bit.tar.gz trivy
+          cd "$GITHUB_WORKSPACE"
+          /tmp/trivy image --scanners vuln --severity HIGH,CRITICAL --exit-code 1 aftergrowth-bootstrap

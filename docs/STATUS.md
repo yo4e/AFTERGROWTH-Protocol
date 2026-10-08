@@ -1,50 +1,58 @@
 # Project Status
 
-Last initialized: 2026-10-07.
+Updated 2026-10-07. Baseline: GitHub main `d740aaa`. Active task: bootstrap Issue #3, with preparatory slices for #4–#8.
 
-This file is intended to be updated by the active implementation agent/dots after meaningful milestones.
+## Verified local progress
 
-## Current phase
+- Phase 1: TypeScript HTTP app, deterministic SVG habitat/hour slider, gen-0000 badge, lineage, health/generation/world endpoints, Git-versioned world and lineage. Production remains pending.
+- Phase 2: generation/world parsing, consistency and ancestor validation; good/night-only mutation tests, deliberately invalid metadata/cost cases, browser rendering fixture. Candidate identity and release eligibility helpers exist; concurrent allocation remains unverified until the canonical release mechanism is configured.
+- Phase 3 preparation: lint/format/type/unit/build/browser/audit/policy jobs, Dockerfile, duplicate branch/MR pipeline suppression, protected-file gate using immutable MR base SHA. YAML parsed locally; GitLab server lint, runner/container, security scans and green public history remain unverified.
+- Phase 4 preparation: official v1 Duo flow candidate and Issue template. Not installed, target-version validated or run.
+- Phase 5/6 preparation: release eligibility, generation report, smoke verification, deploy/rollback argument builders and tested rollback orchestration. No automatic merge, release, image push, IAM grant, cloud provisioning or deploy is wired/enabled.
+- Phase 9 preparation: local run instructions, recording plan and precise access/approval checklist.
 
-**Phase 0 — Access and canonical repository**
+## Latest verification
 
-The GitHub bootstrap/design repository now contains:
+Passed: lint, Prettier, TypeScript, 16 Vitest checks across 7 files, 2 headless Playwright checks, generation/cost policy, application build, compiled HTTP server + smoke integration, npm audit (0 vulnerabilities), Git diff whitespace check.
 
-- product concept
-- architecture draft
-- hackathon strategy
-- cost guardrails
-- autonomous agent contract
-- phased build plan
-- GitHub implementation backlog
+Not run: GitLab CI/server-side flow validation, real Duo growth, cloud health/rollback, live cost/account usage checks.
 
-## Known external dependencies
+Failures diagnosed/repaired: browser globals absent from lint config; initial Vitest dependency vulnerabilities (upgraded to 5.0.3); loopback sandbox restriction (tests rerun with approved local waiting socket); prototype-named static paths and inconsistent manifests hardened during self-review.
 
-Status must be checked rather than assumed:
+## Active gates / next autonomous work
 
-- GitLab Transcend hackathon contributor onboarding
-- public GitLab project allocation
-- GitLab Duo Agent Platform access
-- Google Cloud project/billing authorization
-- ability to configure GitLab → Google Cloud authentication
+Owner update 2026-10-07: participation approval received October 7; allocated group and Showcase known (ACCESS_GATES.md); Developer + AI permissions described, runner/Duo capability unverified; Devpost hackathon Join complete. No reapplication/Join action needed. Before any presentation video recording/generation/editing, the owner must inspect the actual running app and explicitly approve its finish. App finish approval is not yet given; record reviewed build/generation and approval evidence when it arrives.
 
-## Next best action
+See [ACCESS_GATES.md](ACCESS_GATES.md). Existing Issue #2 is the onboarding blocker; #6 is the GCP gate. No authenticated GitLab/GCP tool or approved GCP resource identity is available here; allocated GitLab group/Showcase are known, but the canonical import is not authorized or executed. Human confirms existing access and the dedicated targets; no credentials should be pasted into chat.
 
-1. Check whether hackathon contributor onboarding is already complete.
-2. If complete, establish the public GitLab project as canonical and migrate this repository.
-3. If not complete, initiate/finish onboarding and continue Phase 1 locally where possible.
-4. Do not provision Google Cloud until current free-tier assumptions are rechecked.
-
-## Blockers
-
-None recorded yet.
-
-Agents: if you hit a blocker requiring human authorization, record the exact screen/action/permission needed here and in the corresponding Issue. Continue all independent work that does not depend on it.
+Once GitLab access is available: import the reviewed bootstrap, run server CI lint and pipeline (including OCI), enable/validate the Duo candidate in the allocated project, capture a fresh Issue → tested MR. Select target-supported GitLab-native security reporting and runner packaging before wiring release jobs. Bootstrap protected governance files require explicit review. Once production authority/resources are approved: wire serialized generation allocation, release, OIDC deploy, candidate revision verification, traffic promotion, ancestor restoration and Issue report, then run the two-success/one-failure campaign.
 
 ## Completion counters
 
-- Successful hands-off production generations: 0 / 2 minimum
-- Safe failure/rollback demonstrations: 0 / 1 minimum
-- Lifecycle stages with real evidence: 0 / 9
-- Public Cloud Run deployment: no
-- Submission-ready demo video: no
+- Successful hands-off production generations: **0 / 2**
+- Safe real production failure/rollback demonstrations: **0 / 1** (unit simulation only)
+- Lifecycle stages with public GitLab evidence: **0 / 9**
+- Public Cloud Run deployment: **no**
+- Submission-ready video: **no**
+
+Deadline verified against official rules: October 27, 2026 13:00 UTC / 22:00 JST. Target ready October 26. No submitted version exists yet.
+
+Follow-up security: local Gitleaks and Semgrep passed (details in SECURITY_CHECKS.md); neither required human authentication. Initial exact head 95ea4fd had zero CI checks; read-only bootstrap verification workflow added on the existing enabled Actions service. Await/check latest-head result before reporting CI green.
+
+Bootstrap runner head 87da9b7 CI succeeded, including OCI build and running-container smoke. Trivy HIGH/CRITICAL vulnerability gate is being added for the next exact-head run. GitLab CI/evidence remains blocked by canonical access.
+
+Head 01add99 image gate failed with 11 HIGH npm-bundle vulnerabilities, correctly blocking completion. Runtime package managers are removed and the next exact-head run revalidates build/smoke/scan; no ignore-unfixed or allowlist bypass. Governance now includes unknown infra/Terraform and runs immutable MR-base code without candidate dependencies.
+
+Verified implementation baseline: head `20cdb5eacf018674343fa4b8990c0f47910d1613`, [bootstrap CI 37551999868](https://github.com/yo4e/AFTERGROWTH-Protocol/actions/runs/37551999868) SUCCESS, including OCI build/smoke and Trivy HIGH/CRITICAL 0 after removing unused package managers. Later documentation-only updates must not be mistaken for a check run on that implementation head.
+
+## 2026-10-08 — Issue #11 local implementation, pre-push review
+
+Participation approval/group/Showcase are known; Developer + AI permissions are described, but authenticated runner/Duo/canonical import capability is not established. PR #14 is independent and remains untouched.
+
+Implemented per-generation constrained acceptance contracts, trusted-manifest behavior smoke, and candidate-before-promotion/ancestor-own-contract rollback orchestration. Local quality passed: 22 Vitest checks across 8 files, 2 headless browser tests, lint/format/type/policy/build and compiled server + two-argument CLI (3 seed assertions). See PRODUCTION_ACCEPTANCE.md. These local changes have not been pushed; the remote PR #9 head remains e25a22c and its old successful CI is not evidence for this new implementation.
+
+Real Cloud Run mutation survival/rollback demo is still unperformed and remains an open Issue #11 acceptance criterion. No GitLab import, identity/permission change, cloud provisioning, deploy or merge occurred. Owner app-finish OK is still required before video production.
+
+## 2026-10-08 — authorized delivery update
+
+The owner explicitly approved pushing Issue #11 implementation to PR #9 and merging documentation PR #14. Implementation commit 1270ae8 was pushed. PR #14's unchanged README/reference-only head aff42f6 was merged into its existing base `feat/seed-habitat-lifecycle`, producing merge commit `7e7b42a4b3f480229a43e249ea32d0b871a60e06`. PR #9 remains OPEN/unmerged; main was not merged. The previous pre-push note above is historical. Latest-head bootstrap CI/OCI results must be checked after this delivery record; no runtime cloud/GitLab setup has been performed.

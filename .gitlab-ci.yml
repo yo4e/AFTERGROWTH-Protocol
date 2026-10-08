@@ -1,0 +1,77 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+    - if: "$CI_COMMIT_BRANCH && $CI_OPEN_MERGE_REQUESTS"
+      when: never
+    - if: "$CI_COMMIT_BRANCH"
+stages: [verify, govern, package]
+default:
+  image: node:22-alpine
+  before_script:
+    - npm ci
+verify:
+  stage: verify
+  script:
+    - npm run lint
+    - npm run format:check
+    - npm run typecheck
+    - npm test
+    - npm run build
+policy:
+  stage: govern
+  script:
+    - npm run policy
+browser:
+  stage: verify
+  image: mcr.microsoft.com/playwright:v1.63.0-noble
+  script:
+    - npm run test:browser
+  artifacts:
+    when: on_failure
+    paths: [test-results/]
+    expire_in: 3 days
+container:
+  stage: package
+  image: docker:27-cli
+  before_script: []
+  services: [docker:27-dind]
+  variables:
+    DOCKER_HOST: tcp://docker:2376
+    DOCKER_TLS_CERTDIR: /certs
+  script:
+    - docker build --tag aftergrowth:$CI_COMMIT_SHA .
+protected-files:
+  stage: govern
+  image: node:22
+  before_script: []
+  variables:
+    GIT_DEPTH: "0"
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event"'
+  script:
+    - mkdir -p /tmp/aftergrowth-trusted
+    - git show "$CI_MERGE_REQUEST_DIFF_BASE_SHA:scripts/governance.ts" > /tmp/aftergrowth-trusted/governance.ts
+    - node --experimental-strip-types /tmp/aftergrowth-trusted/governance.ts
+dependency-audit:
+  stage: govern
+  script:
+    - npm audit --audit-level=moderate
+
+secret-detection:
+  stage: govern
+  image:
+    name: ghcr.io/gitleaks/gitleaks:v8.30.1
+    entrypoint: [""]
+  before_script: []
+  variables:
+    GIT_DEPTH: "0"
+  script:
+    - gitleaks git --redact --no-banner .
+sast-local:
+  stage: govern
+  image:
+    name: semgrep/semgrep:1.179.0
+    entrypoint: [""]
+  before_script: []
+  script:
+    - semgrep scan --config p/typescript --config p/javascript --metrics off --disable-version-check --error src scripts public

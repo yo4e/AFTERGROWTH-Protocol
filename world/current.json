@@ -1,0 +1,9 @@
+{
+  "generation": "gen-0000",
+  "traits": {
+    "cycle": "day-night",
+    "flora": ["reed", "moss"],
+    "fauna": ["mote"],
+    "lumenFlowers": false
+  }
+}
