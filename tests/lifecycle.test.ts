@@ -16,6 +16,7 @@ it("requires all gates and traceable intent before release", () => {
     "a".repeat(40),
     "Lumen flowers",
     "2026-10-07T00:00:00Z",
+    [{ kind: "flowers-at-hour", hour: 21, expected: 5 }],
   );
   expect(g.id).toBe("gen-0001");
   expect(releaseReady(g)).toBe(false);
@@ -80,6 +81,10 @@ it("rejects wrong production generation even when HTTP is healthy", async () => 
     )
     .mockResolvedValueOnce(new Response(JSON.stringify(seed)));
   await expect(
-    smoke("https://example.com", "gen-0001", fetcher),
+    smoke(
+      "https://example.com",
+      { ...seed, id: "gen-0001", parent: "gen-0000" },
+      fetcher,
+    ),
   ).rejects.toThrow("identity mismatch");
 });

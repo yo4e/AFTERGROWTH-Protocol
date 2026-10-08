@@ -175,3 +175,10 @@ this branch is not expected to bypass its own protection when first imported.
 
 See [access gates](docs/ACCESS_GATES.md), [Duo setup candidate](docs/DUO_SETUP.md)
 and [evidence ledger](docs/EVIDENCE.md) for remaining external validation.
+
+Each generation requires a deterministic `acceptance` contract. Production smoke
+uses a trusted local manifest to check generation identity and actual world behavior,
+including day/night mutation assertions. The two-argument CLI uses the packaged current
+manifest; an explicit trusted candidate manifest can be supplied as the third argument.
+See [production acceptance](docs/PRODUCTION_ACCEPTANCE.md). Cloud traffic callbacks
+remain injected scaffolding until the deployment target and authority are approved.

@@ -1,3 +1,4 @@
+import { validateAcceptance, type AcceptanceAssertion } from "./acceptance.js";
 export interface Generation {
   id: string;
   parent: string | null;
@@ -5,6 +6,7 @@ export interface Generation {
   merge_request: number | null;
   commit: string | null;
   mutation: string;
+  acceptance: AcceptanceAssertion[];
   checks: {
     tests: string;
     security: string;
@@ -30,6 +32,7 @@ export function validateGeneration(
   if (!value || typeof value !== "object")
     throw new Error("Generation must be an object");
   const g = value as Generation;
+  validateAcceptance(g.acceptance);
   if (
     !id.test(g.id) ||
     (g.parent !== null && (!id.test(g.parent) || g.parent === g.id))

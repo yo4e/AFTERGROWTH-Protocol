@@ -12,7 +12,7 @@ That should be enough context to begin.
 
 Owner instruction: “プレゼン動画作る前に、いったん仕上がり確認したいな。” Show the actual running app for the owner's finish review and obtain explicit OK before recording, generating or editing the presentation video. Preserve the reviewed build/generation and approval evidence. Existing storyboard drafts may remain; do not treat tests, screenshots, earlier permissions or silence as approval. Continue authorized non-video work independently.
 
-GitLab dedicated hackathon application is received and awaiting administrator approval; no allocated project URL yet. Devpost hackathon Join is complete. Do not ask the owner to repeat either completed application/Join step. Resume canonical project work once approval and the allocated URL arrive; authentication/public-import/production gates still apply.
+GitLab participation approval arrived on 2026-10-07. Allocated group https://gitlab.com/groups/gitlab-ai-hackathon/transcend-october-2026/43108201 and Showcase https://gitlab.com/gitlab-ai-hackathon/transcend-october-2026/43108201/showcase/-/work_items/1 are known; Developer + AI permissions are described, but actual runners/Duo/canonical import remain unverified. Devpost hackathon Join is complete. Do not ask the owner to repeat either completed application/Join step. Resume authorized canonical project work after verifying allocated-target capabilities and import authority; authentication/public-import/production gates still apply.
 
 ## Working goal
 

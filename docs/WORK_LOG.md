@@ -28,3 +28,9 @@ Initial head 95ea4fd981191a90d9ba13209cf41685cad6c891 had zero check runs/status
 ## Owner finish-review gate update
 
 Started 2026-10-07 01:01:55 UTC / 10:01:55 JST. Documentation-only update: actual running app must receive owner finish-review OK before presentation video recording/generation/editing. Recorded GitLab dedicated application received/admin approval pending/no project URL and Devpost Join complete. No new implementation, video, deployment or merge. Reviewed docs for consistent gate scope; whitespace diff check passed.
+
+## 2026-10-08 — Issue #11, before push
+
+Started 04:19:24 UTC / 13:19:24 JST. Clean baseline e25a22c, latest Issue #11 and all required specifications reviewed; PR #14 is separate and untouched. No `.agents/skills` directory exists in checkout. Updated approved GitLab participation/group/Showcase facts; Developer + AI grant does not prove runner/Duo availability. Corrected the existing PR #9 body without pushing code.
+
+Implemented safe per-generation acceptance vocabulary, trusted-manifest world behavior smoke and pre-promotion survival with ancestor-specific revalidation. Added actual loopback HTTP integration failures for wrong ID, wrong phenotype and a broken flower count despite a correct trait. Passed full local check, 22 tests, 2 headless browser tests and compiled two-argument seed CLI. No new remote CI/container/cloud run is claimed before authorized push. Parent receives the local result/range before any push; external gates/video approval remain preserved.

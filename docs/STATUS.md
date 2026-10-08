@@ -21,9 +21,9 @@ Failures diagnosed/repaired: browser globals absent from lint config; initial Vi
 
 ## Active gates / next autonomous work
 
-Owner update 2026-10-07: dedicated GitLab application received, administrator approval pending, allocated project URL not yet available; Devpost hackathon Join complete. No reapplication/Join action needed. Before any presentation video recording/generation/editing, the owner must inspect the actual running app and explicitly approve its finish. App finish approval is not yet given; record reviewed build/generation and approval evidence when it arrives.
+Owner update 2026-10-07: participation approval received October 7; allocated group and Showcase known (ACCESS_GATES.md); Developer + AI permissions described, runner/Duo capability unverified; Devpost hackathon Join complete. No reapplication/Join action needed. Before any presentation video recording/generation/editing, the owner must inspect the actual running app and explicitly approve its finish. App finish approval is not yet given; record reviewed build/generation and approval evidence when it arrives.
 
-See [ACCESS_GATES.md](ACCESS_GATES.md). Existing Issue #2 is the onboarding blocker; #6 is the GCP gate. No authenticated GitLab/GCP tool, canonical project URL or approved resource identity is available here. Human confirms existing access and the dedicated targets; no credentials should be pasted into chat.
+See [ACCESS_GATES.md](ACCESS_GATES.md). Existing Issue #2 is the onboarding blocker; #6 is the GCP gate. No authenticated GitLab/GCP tool or approved GCP resource identity is available here; allocated GitLab group/Showcase are known, but the canonical import is not authorized or executed. Human confirms existing access and the dedicated targets; no credentials should be pasted into chat.
 
 Once GitLab access is available: import the reviewed bootstrap, run server CI lint and pipeline (including OCI), enable/validate the Duo candidate in the allocated project, capture a fresh Issue → tested MR. Select target-supported GitLab-native security reporting and runner packaging before wiring release jobs. Bootstrap protected governance files require explicit review. Once production authority/resources are approved: wire serialized generation allocation, release, OIDC deploy, candidate revision verification, traffic promotion, ancestor restoration and Issue report, then run the two-success/one-failure campaign.
 
@@ -44,3 +44,11 @@ Bootstrap runner head 87da9b7 CI succeeded, including OCI build and running-cont
 Head 01add99 image gate failed with 11 HIGH npm-bundle vulnerabilities, correctly blocking completion. Runtime package managers are removed and the next exact-head run revalidates build/smoke/scan; no ignore-unfixed or allowlist bypass. Governance now includes unknown infra/Terraform and runs immutable MR-base code without candidate dependencies.
 
 Verified implementation baseline: head `20cdb5eacf018674343fa4b8990c0f47910d1613`, [bootstrap CI 37551999868](https://github.com/yo4e/AFTERGROWTH-Protocol/actions/runs/37551999868) SUCCESS, including OCI build/smoke and Trivy HIGH/CRITICAL 0 after removing unused package managers. Later documentation-only updates must not be mistaken for a check run on that implementation head.
+
+## 2026-10-08 — Issue #11 local implementation, pre-push review
+
+Participation approval/group/Showcase are known; Developer + AI permissions are described, but authenticated runner/Duo/canonical import capability is not established. PR #14 is independent and remains untouched.
+
+Implemented per-generation constrained acceptance contracts, trusted-manifest behavior smoke, and candidate-before-promotion/ancestor-own-contract rollback orchestration. Local quality passed: 22 Vitest checks across 8 files, 2 headless browser tests, lint/format/type/policy/build and compiled server + two-argument CLI (3 seed assertions). See PRODUCTION_ACCEPTANCE.md. These local changes have not been pushed; the remote PR #9 head remains e25a22c and its old successful CI is not evidence for this new implementation.
+
+Real Cloud Run mutation survival/rollback demo is still unperformed and remains an open Issue #11 acceptance criterion. No GitLab import, identity/permission change, cloud provisioning, deploy or merge occurred. Owner app-finish OK is still required before video production.

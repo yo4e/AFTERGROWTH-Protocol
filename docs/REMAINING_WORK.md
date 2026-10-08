@@ -4,7 +4,7 @@ Use this map with BUILD_PLAN.md and AUTONOMY_LOOP.md. Local prototypes cannot cl
 
 | Phase | Remaining acceptance | Immediate dependency / authority |
 |---|---|---|
-| 0 | Canonical public GitLab, actual pipeline, Duo project access | Dedicated application received, administrator approval pending; invitation/exact allocated URL; existing authenticated execution path; approve import/public visibility |
+| 0 | Canonical public GitLab, actual pipeline, Duo project access | Participation approved October 7; group/Showcase allocated; actual runner/Duo/canonical target verification; existing authenticated execution path; approve import/public visibility |
 | 1–2 | Reviewed seed and browser/schema/safe rejection | Implemented locally and covered by bootstrap CI; merge/review of initial protected governance is owner gate |
 | 3 | GitLab server lint, runner/security report support, ordinary MR green and rejection history | Phase 0 authenticated target and runner details. Bootstrap free GitHub CI supplements OCI/security checks but does not create GitLab evidence |
 | 4 | Real Issue → plan → code/test → normal MR | Phase 0 and approved project-scoped Duo identity/trigger. YAML/tool names must be validated on target version before enabling |
