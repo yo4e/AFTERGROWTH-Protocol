@@ -52,3 +52,7 @@ Participation approval/group/Showcase are known; Developer + AI permissions are 
 Implemented per-generation constrained acceptance contracts, trusted-manifest behavior smoke, and candidate-before-promotion/ancestor-own-contract rollback orchestration. Local quality passed: 22 Vitest checks across 8 files, 2 headless browser tests, lint/format/type/policy/build and compiled server + two-argument CLI (3 seed assertions). See PRODUCTION_ACCEPTANCE.md. These local changes have not been pushed; the remote PR #9 head remains e25a22c and its old successful CI is not evidence for this new implementation.
 
 Real Cloud Run mutation survival/rollback demo is still unperformed and remains an open Issue #11 acceptance criterion. No GitLab import, identity/permission change, cloud provisioning, deploy or merge occurred. Owner app-finish OK is still required before video production.
+
+## 2026-10-08 — authorized delivery update
+
+The owner explicitly approved pushing Issue #11 implementation to PR #9 and merging documentation PR #14. Implementation commit 1270ae8 was pushed. PR #14's unchanged README/reference-only head aff42f6 was merged into its existing base `feat/seed-habitat-lifecycle`, producing merge commit `7e7b42a4b3f480229a43e249ea32d0b871a60e06`. PR #9 remains OPEN/unmerged; main was not merged. The previous pre-push note above is historical. Latest-head bootstrap CI/OCI results must be checked after this delivery record; no runtime cloud/GitLab setup has been performed.
