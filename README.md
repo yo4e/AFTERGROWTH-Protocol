@@ -131,6 +131,7 @@ For the actual submission, the project must live in a **public GitLab project** 
 - [docs/HACKATHON_STRATEGY.md](docs/HACKATHON_STRATEGY.md) — judging, prize, and evidence strategy
 - [docs/COST_GUARDRAILS.md](docs/COST_GUARDRAILS.md) — free-tier constraints
 - [docs/BUILD_PLAN.md](docs/BUILD_PLAN.md) — implementation order and acceptance gates
+- [docs/REFERENCES.md](docs/REFERENCES.md) — conceptual references, design implications, and explicit scope boundaries
 
 ## Design principles
 
